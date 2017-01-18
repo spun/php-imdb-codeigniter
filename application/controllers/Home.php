@@ -10,11 +10,9 @@ class Home extends CI_Controller {
 	}
 
 
-	public function index()
-	{
+	public function index() {
 
 		$data['usuarios'] = $this->Usuarios_m->get_all();
-
 		$this->load->view('home/index', $data);
 	}
 

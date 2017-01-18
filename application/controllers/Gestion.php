@@ -10,8 +10,7 @@ class Gestion extends CI_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
-	public function index()
-	{
+	public function index() {
 		/*
 		$data["tituloHEAD"] = "Bienvenido a mi sitio web";
 		$data["tituloH1"] = "Bienvenido a mi sitio web";
@@ -26,8 +25,7 @@ class Gestion extends CI_Controller {
 		$this->load->view('gestion/index', $output);
 	}
 
-	public function titulos()
-	{
+	public function titulos() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('Titulos');
 		$crud->set_subject('titulo');
@@ -37,8 +35,7 @@ class Gestion extends CI_Controller {
 		$this->load->view('gestion/index', $output);
 	}
 
-	public function personas()
-	{
+	public function personas() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('Personas');
 		$crud->display_as('f_nacimiento','Fecha nacimiento');
@@ -49,8 +46,7 @@ class Gestion extends CI_Controller {
 		$this->load->view('gestion/index', $output);
 	}
 
-	public function personajes()
-	{
+	public function personajes() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('Personajes');
 		$crud->set_subject('personaje');
@@ -61,8 +57,7 @@ class Gestion extends CI_Controller {
 	}
 
 
-	public function repartos()
-	{
+	public function repartos() {
 		$crud = new grocery_CRUD();
 		$crud->set_table('Repartos');
 		$crud->set_subject('reparto');
