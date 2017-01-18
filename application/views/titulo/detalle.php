@@ -30,10 +30,17 @@
 <?php
 	foreach($cast as $c) {
 		echo("<tr>");
-		echo("<td>". $c->persona ."</td>");
-		echo("<td>". $c->personaje ."</td>");
-		echo("<td>". $c->persona_alt ."</td>");
-		echo("<td>". $c->personaje_alt ."</td>");
+		if($c->persona_id) {
+			echo "<td>".anchor("/persona/".$c->persona_id, $c->persona, "title='Ver detalles'")."</td>";
+		} else {
+			echo("<td>". $c->persona_alt ."</td>");
+		}
+
+		if($c->personaje_id) {
+			echo "<td>".anchor("/personaje/".$c->personaje_id, $c->personaje, "title='Ver detalles'")."</td>";
+		} else {
+			echo("<td>". $c->personaje_alt ."</td>");
+		}
 		echo("</tr>");
 	}
 ?>

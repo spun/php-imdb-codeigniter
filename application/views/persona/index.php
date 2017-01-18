@@ -8,10 +8,10 @@
 
 <table>
 <?php
-	foreach($titulos as $titulo) {
+	foreach($personas as $persona) {
 		echo("<tr>");
-		echo("<td>". $titulo->id ."</td>");
-		echo "<td>".anchor("/titulo/".$titulo->id, $titulo->titulo, "title='Ver detalles'")."</td>";
+		echo("<td>". $persona->id ."</td>");
+		echo "<td>".anchor("/persona/".$persona->id, $persona->nombre, "title='Ver detalles'")."</td>";
 		echo("</tr>");
 	}
 ?>

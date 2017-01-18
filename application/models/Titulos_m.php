@@ -18,8 +18,10 @@ class Titulos_m extends CI_Model {
 	}
 
 	public function get_cast($idTitulo) {
-		$this->db->select("Personas.nombre persona, "
+		$this->db->select("Personas.id persona_id, "
+			."Personas.nombre persona, "
 			."Repartos.persona_alternativo persona_alt, "
+			."Personajes.id personaje_id, "
 			."Personajes.nombre personaje, "
 			."Repartos.personaje_alternativo personaje_alt");
 		$this->db->from("Repartos");
