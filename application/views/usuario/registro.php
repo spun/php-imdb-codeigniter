@@ -1,18 +1,13 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 
-</head>
-<body>
+<?php
+	$this->load->view('inc/cabecera.php');
+?>
 
-<div id="container">
 	<h1>Registro</h1>
 
-</div>
-
-</body>
-</html>
+<?php
+	$this->load->view('inc/pie.php');
+?>
