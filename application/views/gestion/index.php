@@ -1,25 +1,10 @@
+<?php
+	defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="utf-8">
-	<title>Gestión clientes</title>
-
-
-	<?php foreach($css_files as $file): ?>
-		<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-	<?php endforeach; ?>
-
-	<?php foreach($js_files as $file): ?>
-		<script src="<?php echo $file; ?>"></script>
-	<?php endforeach; ?>
-
-</head>
-<body>
-
-	<header>
-		<h1>Gestión BO</h1>
-	</header>
+<?php
+	$this->load->view('inc/cabecera_gestion.php');
+?>
 
 	<main>
 		<div>
@@ -27,9 +12,6 @@
 		</div>
 	</main>
 
-	<footer>
-		<p>Footer</p>
-	</footer>
-
-</body>
-</html>
+<?php
+	$this->load->view('inc/pie.php');
+?>
