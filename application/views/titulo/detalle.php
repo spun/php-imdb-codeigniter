@@ -25,6 +25,20 @@
 ?>
 </table>
 
+
+<table>
+<?php
+	foreach($cast as $c) {
+		echo("<tr>");
+		echo("<td>". $c->persona ."</td>");
+		echo("<td>". $c->personaje ."</td>");
+		echo("<td>". $c->persona_alt ."</td>");
+		echo("<td>". $c->personaje_alt ."</td>");
+		echo("</tr>");
+	}
+?>
+</table>
+
 <?php
 	$this->load->view('inc/pie.php');
 ?>

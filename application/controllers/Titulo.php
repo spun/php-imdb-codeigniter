@@ -8,7 +8,6 @@ class Titulo extends CI_Controller {
 		$this->load->model("Titulos_m", '', TRUE);
 	}
 
-
 	public function index() {
 		$data['titulos'] = $this->Titulos_m->get_all();
 		$this->load->view('titulo/index', $data);
@@ -18,6 +17,8 @@ class Titulo extends CI_Controller {
 		$idTitulo = $this->uri->segment(2);
 
 		$data['titulos'] = $this->Titulos_m->get($idTitulo);
+		$data['cast'] = $this->Titulos_m->get_cast($idTitulo);
+
 		$this->load->view('titulo/detalle', $data);
 	}
 }
