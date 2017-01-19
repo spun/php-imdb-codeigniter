@@ -5,22 +5,23 @@
 	<title><?php echo "TituloHEAD"/*$tituloHEAD;*/ ?></title>
 
 	<link rel="stylesheet" href="<?php echo base_url("assets/bootstrap/css/bootstrap.min.css"); ?>" />
+	<link rel="stylesheet" href="<?php echo base_url("assets/custom/css/style.css"); ?>" />
 </head>
 <body>
-
-	<header>
-		<h1><?php echo "Titulo"/*$tituloH1;*/ ?></h1>
-
-		<?php
-
-			if (isset($_SESSION['usuario_id'])) {
-				echo $_SESSION['usuario_nombre'] . '(' . $_SESSION['usuario_rol'] .')';
-				echo anchor("/usuario/logout", "Logout", "title='Cerrar sesion'");
-			}
-		?>
+	<div class="container">
 
 		<?php
 			$this->load->view('inc/menu.php');
 		?>
 
-	</header>
+		<header>
+			<?php
+
+				if (isset($_SESSION['usuario_id'])) {
+					echo $_SESSION['usuario_nombre'] . '(' . $_SESSION['usuario_rol'] .')';
+					echo anchor("/usuario/logout", "Logout", "title='Cerrar sesion'");
+				}
+			?>
+		</header>
+
+		<main class="row">

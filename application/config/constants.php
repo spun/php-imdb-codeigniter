@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/* Constantes propias del proyecto */
+define('copyright', 'Copyright &copy; 1990-2017 IW');
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

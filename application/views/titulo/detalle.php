@@ -6,44 +6,41 @@
 	$this->load->view('inc/cabecera.php');
 ?>
 
-<table>
-<?php
-	foreach($titulos as $titulo) {
-		echo("<tr>");
-		echo("<td>". $titulo->id ."</td>");
-		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $titulo->titulo ."</td>");
-		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $titulo->anyo ."</td>");
-		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $titulo->descripcion ."</td>");
-		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $titulo->puntuacion ."</td>");
-		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $titulo->num_votos ."</td>");
-		echo("</tr>");
-		echo("<tr><td>");
-		if(isset($titulo->imagen) && !empty($titulo->imagen)) {
-			echo img(array(
-			        'src'   => base_url("assets/posters/" . $titulo->imagen),
-			        'height'=> '200',
-			        /*
-			        'width' => '200',
-			        'alt'   => 'alt',
-			        'class' => 'post_images',
-			        'title' => 'That was quite a night',
-			        'rel'   => 'lightbox'*/
-			));
-			echo("</td></tr>");
-		}
-	}
-?>
-</table>
+
+<!-- Main content -->
+<div class="col-sm-8">
+	<div class="title-hero" >
+		<h1><?= $titulos->titulo ?> <small>(<?= $titulos->anyo ?>)</small></h1>
+		<p>
+			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+			<?= $titulos->puntuacion ?> (<?= $titulos->num_votos ?>)
+		</p>
+
+		<?php
+			if(isset($titulos->imagen) && !empty($titulos->imagen)) {
+				echo img(array(
+					'src'   => base_url("assets/posters/" . $titulos->imagen),
+					'class'   => 'poster'
+					/*
+					'height'=> '200',
+					'width' => '200',
+					'alt'   => 'alt',
+					'class' => 'post_images',
+					'title' => 'That was quite a night',
+					'rel'   => 'lightbox'*/
+				));
+				echo("</td></tr>");
+			}
+		?>
+	</div>
+
+<?= $titulos->id ?>
+<?= $titulos->titulo ?>
+<?= $titulos->anyo ?>
+<?= $titulos->descripcion ?>
+<?= $titulos->puntuacion ?>
+<?= $titulos->num_votos ?>
+<?= $titulos->imagen ?>
 
 
 <table>
@@ -77,6 +74,12 @@
 ?>
 </table>
 
+</div>
+
+<!-- Sidebar content -->
+<div class="well col-sm-4">
+	Sidebar
+</div>
 
 <?php
 	$this->load->view('inc/pie.php');

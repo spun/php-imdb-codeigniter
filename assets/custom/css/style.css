@@ -1,0 +1,79 @@
+/* Space out content a bit */
+body {
+    background: #b3b3b0;
+    background: -webkit-linear-gradient(top, #b3b3b0 0%, #e3e2dd 500px);
+    background: linear-gradient(top, #b3b3b0 0%,#e3e2dd 500px);
+    background-color: #e3e2dd;
+    background-repeat: no-repeat;
+}
+
+.container {
+    box-shadow: 0px 0px 8px rgba(0,0,0,0.7);
+    background: white;
+    padding-bottom: 10px;
+}
+
+
+/* Customize container */
+@media (min-width: 1080px) {
+    .container {
+        max-width: 1008px;
+    }
+}
+
+
+/* NavBar*/
+.navbarSprite {
+    background-color: #575757;
+    background-image: none;
+    padding-top: 1px;
+    margin-top: -1px;
+    /* un-container */
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.web-navbar {
+    background: #333333;
+    background: -webkit-linear-gradient(top, #646464 0%, #0e0e0e 100%);
+    background: linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
+    border-top: 1px solid #444444;
+    color: #fff;
+    font: 10pt Verdana, Arial, sans-serif;
+    height: 83px;
+    position: relative;
+    z-index: 200;
+    margin-top: 15px;
+}
+
+.web-navbar .nav.navbar-inverse {
+    background: transparent;
+    height: 41px;
+}
+
+.web-navbar .web-logo {
+    height: 82px;
+}
+
+
+/* title box */
+.title-hero {
+    background-color: #333;
+    padding: 15px;
+
+    /* un-row */
+    margin-right: -15px;
+    margin-left: -15px;
+
+}
+
+.title-hero h1 {
+    color: #fff;
+}
+
+.title-hero .poster {
+    height: 268px;
+    /* un-container */
+    margin-left: -15px;
+    margin-bottom: -15px;
+}

@@ -23,7 +23,7 @@ class Titulos_m extends CI_Model {
 		$this->db->from("Titulos");
 		$this->db->join('Votos', 'Votos.titulo = Titulos.id', 'inner');
 		$this->db->where('Titulos.id', $idTitulo);
-		return $this->db->get()->result();
+		return $this->db->get()->row();
 	}
 
 	public function get_cast($idTitulo) {
