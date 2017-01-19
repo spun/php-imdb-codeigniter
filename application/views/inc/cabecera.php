@@ -12,6 +12,14 @@
 		<h1><?php echo "Titulo"/*$tituloH1;*/ ?></h1>
 
 		<?php
+
+			if (isset($_SESSION['usuario_id'])) {
+				echo $_SESSION['usuario_nombre'] . '(' . $_SESSION['usuario_rol'] .')';
+				echo anchor("/usuario/logout", "Logout", "title='Cerrar sesion'");
+			}
+		?>
+
+		<?php
 			$this->load->view('inc/menu.php');
 		?>
 

@@ -50,14 +50,29 @@ class Usuario extends CI_Controller {
 
 			if(sizeOf($returnQuery) == 1) {
 				// Inicio de sesión
-				$data['mensajeErrorGlobal'] = "TODO: Inicio de sesión";
-				$this->load->view('usuario/login', $data);
+				$datosUsuario = $returnQuery[0];
+
+				$datosNuevaSesion = array(
+					'usuario_id'     => $datosUsuario->id,
+			        'usuario_nombre' => $datosUsuario->nombre,
+			        'usuario_rol'    => $datosUsuario->rol
+				);
+				$this->session->set_userdata($datosNuevaSesion);
+
+				// Redirigimos a home
+				redirect('home', 'refresh');
 			} else {
 				// Mensaje de error
 				$data['mensajeErrorGlobal'] = "No existe ningún usuario con esos datos";
 				$this->load->view('usuario/login', $data);
 			}
 		}
+	}
+
+
+	public function logout() {
+		session_destroy();
+		redirect('home', 'refresh');
 	}
 
 
