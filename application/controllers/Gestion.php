@@ -30,6 +30,10 @@ class Gestion extends CI_Controller {
 		$crud->set_table('Titulos');
 		$crud->set_subject('titulo');
 
+		$crud->set_field_upload('imagen','assets/posters');
+		// Relación con generos
+		$crud->set_relation_n_n('Generos', 'GeneroTitulos', 'Generos', 'titulo', 'genero', 'nombre');
+
 		$output = $crud->render();
 
 		$this->load->view('gestion/index', $output);

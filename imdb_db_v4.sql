@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-01-2017 a las 01:07:59
+-- Tiempo de generación: 19-01-2017 a las 05:57:26
 -- Versión del servidor: 5.7.16-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.13-0ubuntu0.16.04.1
 
@@ -21,6 +21,67 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `imdb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `imdb`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `GeneroTitulos`
+--
+
+CREATE TABLE `GeneroTitulos` (
+  `titulo` int(11) NOT NULL,
+  `genero` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `GeneroTitulos`
+--
+
+INSERT INTO `GeneroTitulos` (`titulo`, `genero`) VALUES
+(2, 1),
+(2, 2),
+(1, 8),
+(1, 18),
+(2, 18);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Generos`
+--
+
+CREATE TABLE `Generos` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Generos`
+--
+
+INSERT INTO `Generos` (`id`, `nombre`) VALUES
+(1, 'Action'),
+(2, 'Adventure'),
+(3, 'Animation'),
+(4, 'Biography'),
+(5, 'Comedy'),
+(6, 'Crime'),
+(7, 'Documentary'),
+(8, 'Drama'),
+(9, 'Family'),
+(10, 'Fantasy'),
+(11, 'Film-Noir'),
+(12, 'History'),
+(13, 'Horror'),
+(14, 'Music'),
+(15, 'Musical'),
+(16, 'Mystery'),
+(17, 'Romance'),
+(18, 'Sci-Fi'),
+(19, 'Sport'),
+(20, 'Thriller'),
+(21, 'War'),
+(22, 'Western');
 
 -- --------------------------------------------------------
 
@@ -135,16 +196,17 @@ CREATE TABLE `Titulos` (
   `id` int(11) NOT NULL,
   `titulo` varchar(400) NOT NULL,
   `anyo` int(11) NOT NULL,
-  `descripcion` text NOT NULL
+  `descripcion` text NOT NULL,
+  `imagen` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Titulos`
 --
 
-INSERT INTO `Titulos` (`id`, `titulo`, `anyo`, `descripcion`) VALUES
-(1, 'Arrival', 2016, '<p>\r\n	When 12 mysterious spacecraft appear around the world, linguistics professor Louise Banks is tasked with interpreting the language of the apparent alien visitors.</p>\r\n'),
-(2, 'Rogue One: A Star Wars Story', 2016, '<p>\r\n	The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting up the epic saga to follow.</p>\r\n');
+INSERT INTO `Titulos` (`id`, `titulo`, `anyo`, `descripcion`, `imagen`) VALUES
+(1, 'Arrival', 2016, '<p>\r\n	When 12 mysterious spacecraft appear around the world, linguistics professor Louise Banks is tasked with interpreting the language of the apparent alien visitors.</p>\r\n', '138ea-arrival.jpg'),
+(2, 'Rogue One: A Star Wars Story', 2016, '<p>\r\n	The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting up the epic saga to follow.</p>\r\n', '5851e-rogue.jpg');
 
 -- --------------------------------------------------------
 
@@ -166,11 +228,44 @@ CREATE TABLE `Usuarios` (
 
 INSERT INTO `Usuarios` (`id`, `nombre`, `correo`, `password`, `rol`) VALUES
 (1, 'demo', 'demo@email.com', 'demo', 'user'),
-(9, 'neoneo', 'demo@demo.com', '12345678', 'user');
+(9, 'neoneo', 'demo@demo.com', '12345678', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `Votos`
+--
+
+CREATE TABLE `Votos` (
+  `usuario` int(11) NOT NULL,
+  `titulo` int(11) NOT NULL,
+  `puntuacion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Votos`
+--
+
+INSERT INTO `Votos` (`usuario`, `titulo`, `puntuacion`) VALUES
+(1, 1, 5),
+(9, 1, 7);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `GeneroTitulos`
+--
+ALTER TABLE `GeneroTitulos`
+  ADD PRIMARY KEY (`titulo`,`genero`),
+  ADD KEY `fk_generoTitulos_genero` (`genero`);
+
+--
+-- Indices de la tabla `Generos`
+--
+ALTER TABLE `Generos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `Personajes`
@@ -206,9 +301,21 @@ ALTER TABLE `Usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `Votos`
+--
+ALTER TABLE `Votos`
+  ADD PRIMARY KEY (`usuario`,`titulo`),
+  ADD KEY `fk_votos_titulos` (`titulo`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
+--
+-- AUTO_INCREMENT de la tabla `Generos`
+--
+ALTER TABLE `Generos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `Personajes`
 --
@@ -228,7 +335,7 @@ ALTER TABLE `RepartoActores`
 -- AUTO_INCREMENT de la tabla `Titulos`
 --
 ALTER TABLE `Titulos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
@@ -239,12 +346,26 @@ ALTER TABLE `Usuarios`
 --
 
 --
+-- Filtros para la tabla `GeneroTitulos`
+--
+ALTER TABLE `GeneroTitulos`
+  ADD CONSTRAINT `fk_generoTitulos_genero` FOREIGN KEY (`genero`) REFERENCES `Generos` (`id`),
+  ADD CONSTRAINT `fk_generoTitulos_titulo` FOREIGN KEY (`titulo`) REFERENCES `Titulos` (`id`);
+
+--
 -- Filtros para la tabla `RepartoActores`
 --
 ALTER TABLE `RepartoActores`
-  ADD CONSTRAINT `fk_personajes_persona` FOREIGN KEY (`persona`) REFERENCES `Personas` (`id`),
-  ADD CONSTRAINT `fk_personajes_personaje` FOREIGN KEY (`personaje`) REFERENCES `Personajes` (`id`),
-  ADD CONSTRAINT `fk_personajes_titulo` FOREIGN KEY (`titulo`) REFERENCES `Titulos` (`id`);
+  ADD CONSTRAINT `fk_repartoActores_personajes` FOREIGN KEY (`personaje`) REFERENCES `Personajes` (`id`),
+  ADD CONSTRAINT `fk_repartoActores_personas` FOREIGN KEY (`persona`) REFERENCES `Personas` (`id`),
+  ADD CONSTRAINT `fk_repartoActores_titulos` FOREIGN KEY (`titulo`) REFERENCES `Titulos` (`id`);
+
+--
+-- Filtros para la tabla `Votos`
+--
+ALTER TABLE `Votos`
+  ADD CONSTRAINT `fk_votos_titulos` FOREIGN KEY (`titulo`) REFERENCES `Titulos` (`id`),
+  ADD CONSTRAINT `fk_votos_usuarios` FOREIGN KEY (`usuario`) REFERENCES `Usuarios` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

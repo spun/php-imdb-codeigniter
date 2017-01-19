@@ -21,6 +21,26 @@
 		echo("<tr>");
 		echo("<td>". $titulo->descripcion ."</td>");
 		echo("</tr>");
+		echo("<tr>");
+		echo("<td>". $titulo->puntuacion ."</td>");
+		echo("</tr>");
+		echo("<tr>");
+		echo("<td>". $titulo->num_votos ."</td>");
+		echo("</tr>");
+		echo("<tr><td>");
+		if(isset($titulo->imagen) && !empty($titulo->imagen)) {
+			echo img(array(
+			        'src'   => base_url("assets/posters/" . $titulo->imagen),
+			        'height'=> '200',
+			        /*
+			        'width' => '200',
+			        'alt'   => 'alt',
+			        'class' => 'post_images',
+			        'title' => 'That was quite a night',
+			        'rel'   => 'lightbox'*/
+			));
+			echo("</td></tr>");
+		}
 	}
 ?>
 </table>

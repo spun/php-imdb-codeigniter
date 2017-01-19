@@ -13,8 +13,17 @@ class Titulos_m extends CI_Model {
 	}
 
 	public function get($idTitulo) {
-		$this->db->select("id, titulo, anyo, descripcion");
-		return $this->db->get_where('Titulos', array('id' => $idTitulo))->result();
+		$this->db->select("Titulos.id id, "
+			."Titulos.titulo titulo, "
+			."Titulos.anyo anyo, "
+			."Titulos.descripcion descripcion, "
+			."Titulos.imagen imagen, "
+			."avg(puntuacion) puntuacion, "
+			."count(puntuacion) num_votos");
+		$this->db->from("Titulos");
+		$this->db->join('Votos', 'Votos.titulo = Titulos.id', 'inner');
+		$this->db->where('Titulos.id', $idTitulo);
+		return $this->db->get()->result();
 	}
 
 	public function get_cast($idTitulo) {
@@ -27,7 +36,7 @@ class Titulos_m extends CI_Model {
 		$this->db->from("RepartoActores");
 		$this->db->join('Personas', 'Personas.id = RepartoActores.persona', 'left');
 		$this->db->join('Personajes', 'Personajes.id = RepartoActores.personaje', 'left');
-		$this->db->where(array('RepartoActores.titulo' => $idTitulo));
+		$this->db->where('RepartoActores.titulo', $idTitulo);
 		return $this->db->get()->result();
 	}
 }
