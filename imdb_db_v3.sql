@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 18-01-2017 a las 07:45:29
+-- Tiempo de generación: 19-01-2017 a las 01:07:59
 -- Versión del servidor: 5.7.16-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.13-0ubuntu0.16.04.1
 
@@ -91,10 +91,10 @@ INSERT INTO `Personas` (`id`, `nombre`, `f_nacimiento`, `descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Repartos`
+-- Estructura de tabla para la tabla `RepartoActores`
 --
 
-CREATE TABLE `Repartos` (
+CREATE TABLE `RepartoActores` (
   `id` int(11) NOT NULL,
   `titulo` int(11) NOT NULL,
   `personaje` int(11) DEFAULT NULL,
@@ -104,10 +104,10 @@ CREATE TABLE `Repartos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Repartos`
+-- Volcado de datos para la tabla `RepartoActores`
 --
 
-INSERT INTO `Repartos` (`id`, `titulo`, `personaje`, `personaje_alternativo`, `persona`, `persona_alternativo`) VALUES
+INSERT INTO `RepartoActores` (`id`, `titulo`, `personaje`, `personaje_alternativo`, `persona`, `persona_alternativo`) VALUES
 (7, 1, 1, '', 1, ''),
 (8, 1, 2, '', 2, ''),
 (9, 1, 3, '', 3, ''),
@@ -156,15 +156,17 @@ CREATE TABLE `Usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `correo` varchar(200) NOT NULL,
-  `password` varchar(200) NOT NULL
+  `password` varchar(200) NOT NULL,
+  `rol` enum('user','admin') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Usuarios`
 --
 
-INSERT INTO `Usuarios` (`id`, `nombre`, `correo`, `password`) VALUES
-(1, 'demo', 'demo@email.com', 'demo');
+INSERT INTO `Usuarios` (`id`, `nombre`, `correo`, `password`, `rol`) VALUES
+(1, 'demo', 'demo@email.com', 'demo', 'user'),
+(9, 'neoneo', 'demo@demo.com', '12345678', 'user');
 
 --
 -- Índices para tablas volcadas
@@ -183,9 +185,9 @@ ALTER TABLE `Personas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `Repartos`
+-- Indices de la tabla `RepartoActores`
 --
-ALTER TABLE `Repartos`
+ALTER TABLE `RepartoActores`
   ADD PRIMARY KEY (`id`),
   ADD KEY `personaje` (`personaje`),
   ADD KEY `titulo` (`titulo`),
@@ -218,9 +220,9 @@ ALTER TABLE `Personajes`
 ALTER TABLE `Personas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT de la tabla `Repartos`
+-- AUTO_INCREMENT de la tabla `RepartoActores`
 --
-ALTER TABLE `Repartos`
+ALTER TABLE `RepartoActores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `Titulos`
@@ -231,15 +233,15 @@ ALTER TABLE `Titulos`
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --
 ALTER TABLE `Usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `Repartos`
+-- Filtros para la tabla `RepartoActores`
 --
-ALTER TABLE `Repartos`
+ALTER TABLE `RepartoActores`
   ADD CONSTRAINT `fk_personajes_persona` FOREIGN KEY (`persona`) REFERENCES `Personas` (`id`),
   ADD CONSTRAINT `fk_personajes_personaje` FOREIGN KEY (`personaje`) REFERENCES `Personajes` (`id`),
   ADD CONSTRAINT `fk_personajes_titulo` FOREIGN KEY (`titulo`) REFERENCES `Titulos` (`id`);

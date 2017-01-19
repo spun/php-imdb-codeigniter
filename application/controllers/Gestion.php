@@ -59,7 +59,7 @@ class Gestion extends CI_Controller {
 
 	public function repartos() {
 		$crud = new grocery_CRUD();
-		$crud->set_table('Repartos');
+		$crud->set_table('RepartoActores');
 		$crud->set_subject('reparto');
 
 		$crud->set_relation('titulo','Titulos','titulo');

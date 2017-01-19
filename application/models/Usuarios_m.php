@@ -12,10 +12,13 @@ class Usuarios_m extends CI_Model {
 		return $this->db->get("Usuarios")->result();
 	}
 
-	public function check($correo, $password) {
-		$this->db->select("id, nombre, correo, password");
-
+	public function get($correo, $password) {
+		$this->db->select("id, nombre, rol");
 		return $this->db->get_where('Usuarios', array('correo' => $correo, 'password' => $password))->result();
+	}
+
+	public function add($nombre, $correo, $password) {
+		return $this->db->insert("Usuarios", array('nombre' => $nombre, 'correo' => $correo, 'password' => $password));
 	}
 }
 

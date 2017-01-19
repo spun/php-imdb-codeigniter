@@ -20,14 +20,14 @@ class Titulos_m extends CI_Model {
 	public function get_cast($idTitulo) {
 		$this->db->select("Personas.id persona_id, "
 			."Personas.nombre persona, "
-			."Repartos.persona_alternativo persona_alt, "
+			."RepartoActores.persona_alternativo persona_alt, "
 			."Personajes.id personaje_id, "
 			."Personajes.nombre personaje, "
-			."Repartos.personaje_alternativo personaje_alt");
-		$this->db->from("Repartos");
-		$this->db->join('Personas', 'Personas.id = Repartos.persona', 'left');
-		$this->db->join('Personajes', 'Personajes.id = Repartos.personaje', 'left');
-		$this->db->where(array('Repartos.titulo' => $idTitulo));
+			."RepartoActores.personaje_alternativo personaje_alt");
+		$this->db->from("RepartoActores");
+		$this->db->join('Personas', 'Personas.id = RepartoActores.persona', 'left');
+		$this->db->join('Personajes', 'Personajes.id = RepartoActores.personaje', 'left');
+		$this->db->where(array('RepartoActores.titulo' => $idTitulo));
 		return $this->db->get()->result();
 	}
 }
