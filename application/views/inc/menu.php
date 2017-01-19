@@ -6,5 +6,10 @@
 	[<?php echo anchor("/personaje", "Personajes", "title='Personajes disponibles'"); ?>]
 	[<?php echo anchor("/usuario/registro", "Registro", "title='Registro de usuarios'"); ?>]
 	[<?php echo anchor("/usuario/login", "Login", "title='Entrada de usuarios'"); ?>]
+	<?php
+		if (isset($_SESSION['usuario_rol']) && $_SESSION['usuario_rol'] == 'admin') {
+			echo anchor("/gestion", "Gestion", "title='Gestión de contenido'");
+		}
+	?>
 
 </nav>

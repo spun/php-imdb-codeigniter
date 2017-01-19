@@ -10,69 +10,96 @@ class Gestion extends CI_Controller {
 		$this->load->library('grocery_CRUD');
 	}
 
+
+
+	public function checkUserPermissions() {
+
+		// Comprobamos que el usuario que intenta acceder es un administrador
+        if($this->session->userdata('usuario_rol') != 'admin') {
+            redirect("home");
+        }
+        return true;
+    }
+
 	public function index() {
-		/*
-		$data["tituloHEAD"] = "Bienvenido a mi sitio web";
-		$data["tituloH1"] = "Bienvenido a mi sitio web";
-		*/
 
-		$crud = new grocery_CRUD();
-		$crud->set_table('Usuarios');
-		$crud->set_subject('usuario');
+		if ($this->checkUserPermissions()) {
+			/*
+			$data["tituloHEAD"] = "Bienvenido a mi sitio web";
+			$data["tituloH1"] = "Bienvenido a mi sitio web";
+			*/
 
-		$output = $crud->render();
+			$crud = new grocery_CRUD();
+			$crud->set_table('Usuarios');
+			$crud->set_subject('usuario');
 
-		$this->load->view('gestion/index', $output);
+			$output = $crud->render();
+
+			$this->load->view('gestion/index', $output);
+
+		}
 	}
 
 	public function titulos() {
-		$crud = new grocery_CRUD();
-		$crud->set_table('Titulos');
-		$crud->set_subject('titulo');
 
-		$crud->set_field_upload('imagen','assets/posters');
-		// Relación con generos
-		$crud->set_relation_n_n('Generos', 'GeneroTitulos', 'Generos', 'titulo', 'genero', 'nombre');
+		if($this->checkUserPermissions()) {
+			$crud = new grocery_CRUD();
+			$crud->set_table('Titulos');
+			$crud->set_subject('titulo');
 
-		$output = $crud->render();
+			$crud->set_field_upload('imagen','assets/posters');
+			// Relación con generos
+			$crud->set_relation_n_n('Generos', 'GeneroTitulos', 'Generos', 'titulo', 'genero', 'nombre');
 
-		$this->load->view('gestion/index', $output);
+			$output = $crud->render();
+
+			$this->load->view('gestion/index', $output);
+		}
 	}
 
 	public function personas() {
-		$crud = new grocery_CRUD();
-		$crud->set_table('Personas');
-		$crud->display_as('f_nacimiento','Fecha nacimiento');
-		$crud->set_subject('persona');
 
-		$output = $crud->render();
+		if($this->checkUserPermissions()) {
+			$crud = new grocery_CRUD();
+			$crud->set_table('Personas');
+			$crud->display_as('f_nacimiento','Fecha nacimiento');
+			$crud->set_subject('persona');
 
-		$this->load->view('gestion/index', $output);
+			$output = $crud->render();
+
+			$this->load->view('gestion/index', $output);
+		}
 	}
 
 	public function personajes() {
-		$crud = new grocery_CRUD();
-		$crud->set_table('Personajes');
-		$crud->set_subject('personaje');
 
-		$output = $crud->render();
+		if($this->checkUserPermissions()) {
+			$crud = new grocery_CRUD();
+			$crud->set_table('Personajes');
+			$crud->set_subject('personaje');
 
-		$this->load->view('gestion/index', $output);
+			$output = $crud->render();
+
+			$this->load->view('gestion/index', $output);
+		}
 	}
 
 
 	public function repartos() {
-		$crud = new grocery_CRUD();
-		$crud->set_table('RepartoActores');
-		$crud->set_subject('reparto');
 
-		$crud->set_relation('titulo','Titulos','titulo');
-		$crud->set_relation('personaje','Personajes','nombre');
-		$crud->set_relation('persona','Personas','nombre');
+		if($this->checkUserPermissions()) {
+			$crud = new grocery_CRUD();
+			$crud->set_table('RepartoActores');
+			$crud->set_subject('reparto');
 
-		$output = $crud->render();
+			$crud->set_relation('titulo','Titulos','titulo');
+			$crud->set_relation('personaje','Personajes','nombre');
+			$crud->set_relation('persona','Personas','nombre');
 
-		$this->load->view('gestion/index', $output);
+			$output = $crud->render();
+
+			$this->load->view('gestion/index', $output);
+		}
 	}
 
 }
