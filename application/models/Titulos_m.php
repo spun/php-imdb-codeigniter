@@ -39,6 +39,14 @@ class Titulos_m extends CI_Model {
 		$this->db->where('RepartoActores.titulo', $idTitulo);
 		return $this->db->get()->result();
 	}
+
+	public function get_genres($idTitulo) {
+		$this->db->select("id genero_id, nombre");
+		$this->db->from("Generos");
+		$this->db->join('GeneroTitulos', 'GeneroTitulos.genero = Generos.id', 'inner');
+		$this->db->where('GeneroTitulos.titulo', $idTitulo);
+		return $this->db->get()->result();
+	}
 }
 
 ?>

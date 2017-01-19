@@ -66,6 +66,18 @@
 ?>
 </table>
 
+
+<table>
+<?php
+	foreach($generos as $genero) {
+		echo("<tr>");
+		echo "<td>".anchor("/genero/".$genero->genero_id, $genero->nombre, "title='Ver detalles'")."</td>";
+		echo("</tr>");
+	}
+?>
+</table>
+
+
 <?php
 	$this->load->view('inc/pie.php');
 ?>
