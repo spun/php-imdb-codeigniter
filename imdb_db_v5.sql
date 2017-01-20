@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-01-2017 a las 05:57:26
+-- Tiempo de generación: 20-01-2017 a las 01:54:32
 -- Versión del servidor: 5.7.16-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.13-0ubuntu0.16.04.1
 
@@ -39,10 +39,32 @@ CREATE TABLE `GeneroTitulos` (
 
 INSERT INTO `GeneroTitulos` (`titulo`, `genero`) VALUES
 (2, 1),
+(6, 1),
 (2, 2),
+(10, 2),
+(8, 4),
+(3, 6),
+(4, 6),
+(5, 6),
+(6, 6),
+(7, 6),
+(9, 6),
 (1, 8),
+(3, 8),
+(4, 8),
+(5, 8),
+(6, 8),
+(7, 8),
+(8, 8),
+(9, 8),
+(10, 8),
+(12, 8),
+(10, 10),
+(8, 12),
+(1, 16),
 (1, 18),
-(2, 18);
+(2, 18),
+(11, 22);
 
 -- --------------------------------------------------------
 
@@ -205,8 +227,18 @@ CREATE TABLE `Titulos` (
 --
 
 INSERT INTO `Titulos` (`id`, `titulo`, `anyo`, `descripcion`, `imagen`) VALUES
-(1, 'Arrival', 2016, '<p>\r\n	When 12 mysterious spacecraft appear around the world, linguistics professor Louise Banks is tasked with interpreting the language of the apparent alien visitors.</p>\r\n', '138ea-arrival.jpg'),
-(2, 'Rogue One: A Star Wars Story', 2016, '<p>\r\n	The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting up the epic saga to follow.</p>\r\n', '5851e-rogue.jpg');
+(1, 'Arrival', 2016, '<p>\r\n	When 12 mysterious spacecraft appear around the world, linguistics professor Louise Banks is tasked with interpreting the language of the apparent alien visitors.</p>\r\n', '5ed48-138ea-arrival.jpg'),
+(2, 'Rogue One: A Star Wars Story', 2016, '<p>\r\n	The Rebel Alliance makes a risky move to steal the plans for the Death Star, setting up the epic saga to follow.</p>\r\n', '5851e-rogue.jpg'),
+(3, 'The Shawshank Redemption', 1994, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.</span></p>\r\n', 'a06ad-ssr.jpg'),
+(4, 'The Godfather', 1972, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.</span></p>\r\n', '714cd-gf1.jpg'),
+(5, 'The Godfather: Part II', 1974, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">The early life and career of Vito Corleone in 1920s New York is portrayed while his son, Michael, expands and tightens his grip on the family crime syndicate.</span></p>\r\n', '68b94-gf2.jpg'),
+(6, 'The Dark Knight', 2008, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.</span></p>\r\n', 'e3aa2-dk1.jpg'),
+(7, '12 Angry Men', 1957, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">A jury holdout attempts to prevent a miscarriage of justice by forcing his colleagues to reconsider the evidence.</span></p>\r\n', 'd7cce-12.jpg'),
+(8, 'Schindler\'s List', 1993, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">In German-occupied Poland during World War II, Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazi Germans.</span></p>\r\n', '5f8f2-sl.jpg'),
+(9, 'Pulp Fiction', 1994, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">The lives of two mob hit men, a boxer, a gangster&#39;s wife, and a pair of diner bandits intertwine in four tales of violence and redemption.</span></p>\r\n', '06925-pf.jpg'),
+(10, 'The Lord of the Rings: The Return of the King', 2003, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">Gandalf and Aragorn lead the World of Men against Sauron&#39;s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.</span></p>\r\n', '64bd5-lor.jpg'),
+(11, 'The Good, the Bad and the Ugly', 1966, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">A bounty hunting scam joins two men in an uneasy alliance against a third in a race to find a fortune in gold buried in a remote cemetery.</span></p>\r\n', 'e17f1-gbu.jpg'),
+(12, 'Fight Club', 1999, '<p>\r\n	<span style="color: rgb(51, 51, 51); font-family: Verdana, Arial, sans-serif; font-size: 13px; background-color: rgb(238, 238, 238);">An insomniac office worker, looking for a way to change his life, crosses paths with a devil-may-care soap maker, forming an underground fight club that evolves into something much, much more.</span></p>\r\n', '8c022-fc.jpg');
 
 -- --------------------------------------------------------
 
@@ -330,12 +362,12 @@ ALTER TABLE `Personas`
 -- AUTO_INCREMENT de la tabla `RepartoActores`
 --
 ALTER TABLE `RepartoActores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `Titulos`
 --
 ALTER TABLE `Titulos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `Usuarios`
 --

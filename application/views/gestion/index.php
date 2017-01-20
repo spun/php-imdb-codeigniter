@@ -6,12 +6,10 @@
 	$this->load->view('inc/cabecera_gestion.php');
 ?>
 
-	<main>
-		<div>
-			<?php echo $output; ?>
-		</div>
-	</main>
+	<div>
+		<?php echo $output; ?>
+	</div>
 
 <?php
-	$this->load->view('inc/pie.php');
+	$this->load->view('inc/pie_gestion.php');
 ?>

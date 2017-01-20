@@ -39,30 +39,39 @@
 	<hr/>
 
 	<h2>Cast</h2>
-	<table style="width: 100%;">
-		<caption>Cast overview, first billed only:</caption>
-		<tbody>
-			<?php foreach($cast as $c) {
-				echo("<tr>");
-				if($c->persona_id) {
-					echo "<td>".anchor("/persona/".$c->persona_id, $c->persona, "title='Ver detalles'")."</td>";
-				} else {
-					echo("<td>". $c->persona_alt ."</td>");
-				}
-
-				echo "<td> ... </td>";
-
-				if($c->personaje_id) {
-					echo "<td>".anchor("/personaje/".$c->personaje_id, $c->personaje, "title='Ver detalles'")."</td>";
-				} else {
-					echo("<td>". $c->personaje_alt ."</td>");
-				}
-				echo("</tr>");
-			} ?>
-		</tbody>
-	</table>
+	<p>Cast overview, first billed only:</p>
 
 
+	<?php
+	if (sizeOf($cast) != 0) {
+	?>
+		<table style="width: 100%;">
+			<tbody>
+				<?php foreach($cast as $c) {
+					echo("<tr>");
+					if($c->persona_id) {
+						echo "<td>".anchor("/persona/".$c->persona_id, $c->persona, "title='Ver detalles'")."</td>";
+					} else {
+						echo("<td>". $c->persona_alt ."</td>");
+					}
+
+					echo "<td> ... </td>";
+
+					if($c->personaje_id) {
+						echo "<td>".anchor("/personaje/".$c->personaje_id, $c->personaje, "title='Ver detalles'")."</td>";
+					} else {
+						echo("<td>". $c->personaje_alt ."</td>");
+					}
+					echo("</tr>");
+				} ?>
+			</tbody>
+		</table>
+
+	<?php
+	} else {
+		echo '<div class="well well-lg">No cast available</div>';
+	}
+	?>
 <table>
 <?php
 	foreach($generos as $genero) {
