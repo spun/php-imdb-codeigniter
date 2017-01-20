@@ -6,21 +6,23 @@
 	$this->load->view('inc/cabecera.php');
 ?>
 
-<table>
-<?php
-	foreach($personas as $persona) {
-		echo("<tr>");
-		echo("<td>". $persona->id ."</td>");
+
+<!-- Main content -->
+<div class="col-sm-8">
+	<h1>Detalles de la persona</h1>
+	<?php
+		echo("<ul>");
+		echo("<li><strong>ID: </strong>". $persona->id ."</li>");
+		echo("<li><strong>Nombre: </strong>". $persona->nombre ."</li>");
+		echo("<li><strong>Descripción: </strong>". $persona->descripcion ."</li>");
 		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $persona->nombre ."</td>");
-		echo("</tr>");
-		echo("<tr>");
-		echo("<td>". $persona->descripcion ."</td>");
-		echo("</tr>");
-	}
-?>
-</table>
+	?>
+</div>
+
+<!-- Sidebar content -->
+<div class="sidebar-box well col-sm-4">
+	Sidebar
+</div>
 
 <?php
 	$this->load->view('inc/pie.php');

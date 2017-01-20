@@ -16,7 +16,7 @@ class Titulo extends CI_Controller {
 	public function detail() {
 		$idTitulo = $this->uri->segment(2);
 
-		$data['titulos'] = $this->Titulos_m->get($idTitulo);
+		$data['titulo'] = $this->Titulos_m->get($idTitulo);
 		$data['cast'] = $this->Titulos_m->get_cast($idTitulo);
 		$data['generos'] = $this->Titulos_m->get_genres($idTitulo);
 

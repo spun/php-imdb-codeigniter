@@ -10,16 +10,16 @@
 <!-- Main content -->
 <div class="col-sm-8">
 	<div class="title-hero" >
-		<h1><?= $titulos->titulo ?> <small>(<?= $titulos->anyo ?>)</small></h1>
+		<h1><?= $titulo->titulo ?> <small>(<?= $titulo->anyo ?>)</small></h1>
 		<p>
 			<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-			<?= $titulos->puntuacion ?> (<?= $titulos->num_votos ?>)
+			<?= $titulo->puntuacion ?> (<?= $titulo->num_votos ?>)
 		</p>
 
 		<?php
-			if(isset($titulos->imagen) && !empty($titulos->imagen)) {
+			if(isset($titulo->imagen) && !empty($titulo->imagen)) {
 				echo img(array(
-					'src'   => base_url("assets/posters/" . $titulos->imagen),
+					'src'   => base_url("assets/posters/" . $titulo->imagen),
 					'class'   => 'poster'
 					/*
 					'height'=> '200',
@@ -34,34 +34,33 @@
 		?>
 	</div>
 
-<?= $titulos->id ?>
-<?= $titulos->titulo ?>
-<?= $titulos->anyo ?>
-<?= $titulos->descripcion ?>
-<?= $titulos->puntuacion ?>
-<?= $titulos->num_votos ?>
-<?= $titulos->imagen ?>
+	<p><?= $titulo->descripcion ?></p>
 
+	<hr/>
 
-<table>
-<?php
-	foreach($cast as $c) {
-		echo("<tr>");
-		if($c->persona_id) {
-			echo "<td>".anchor("/persona/".$c->persona_id, $c->persona, "title='Ver detalles'")."</td>";
-		} else {
-			echo("<td>". $c->persona_alt ."</td>");
-		}
+	<h2>Cast</h2>
+	<table style="width: 100%;">
+		<caption>Cast overview, first billed only:</caption>
+		<tbody>
+			<?php foreach($cast as $c) {
+				echo("<tr>");
+				if($c->persona_id) {
+					echo "<td>".anchor("/persona/".$c->persona_id, $c->persona, "title='Ver detalles'")."</td>";
+				} else {
+					echo("<td>". $c->persona_alt ."</td>");
+				}
 
-		if($c->personaje_id) {
-			echo "<td>".anchor("/personaje/".$c->personaje_id, $c->personaje, "title='Ver detalles'")."</td>";
-		} else {
-			echo("<td>". $c->personaje_alt ."</td>");
-		}
-		echo("</tr>");
-	}
-?>
-</table>
+				echo "<td> ... </td>";
+
+				if($c->personaje_id) {
+					echo "<td>".anchor("/personaje/".$c->personaje_id, $c->personaje, "title='Ver detalles'")."</td>";
+				} else {
+					echo("<td>". $c->personaje_alt ."</td>");
+				}
+				echo("</tr>");
+			} ?>
+		</tbody>
+	</table>
 
 
 <table>
@@ -74,10 +73,19 @@
 ?>
 </table>
 
+<?= $titulo->id ?>
+<?= $titulo->titulo ?>
+<?= $titulo->anyo ?>
+<?= $titulo->descripcion ?>
+<?= $titulo->puntuacion ?>
+<?= $titulo->num_votos ?>
+<?= $titulo->imagen ?>
+
+
 </div>
 
 <!-- Sidebar content -->
-<div class="well col-sm-4">
+<div class="sidebar-box well col-sm-4">
 	Sidebar
 </div>
 

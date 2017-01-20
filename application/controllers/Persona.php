@@ -16,7 +16,7 @@ class Persona extends CI_Controller {
 	public function detail() {
 		$idPersona = $this->uri->segment(2);
 
-		$data['personas'] = $this->Personas_m->get($idPersona);
+		$data['persona'] = $this->Personas_m->get($idPersona);
 
 		$this->load->view('persona/detalle', $data);
 	}

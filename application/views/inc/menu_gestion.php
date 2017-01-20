@@ -5,5 +5,6 @@
 	[<?php echo anchor("/gestion/personas", "Personas", "title='Gestionar personas'"); ?>]
 	[<?php echo anchor("/gestion/personajes", "Personajes", "title='Gestionar personajes'"); ?>]
 	[<?php echo anchor("/gestion/repartos", "Repartos", "title='Gestionar participación de personajes en títulos'"); ?>]
+	{<?php echo anchor("/home", "Volver a la web", "title='Volver a la web'"); ?>}
 
 </nav>

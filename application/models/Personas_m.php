@@ -14,7 +14,7 @@ class Personas_m extends CI_Model {
 
 	public function get($idPersona) {
 		$this->db->select("id, nombre, descripcion");
-		return $this->db->get_where('Personas', array('id' => $idPersona))->result();
+		return $this->db->get_where('Personas', array('id' => $idPersona))->row();
 	}
 }
 
