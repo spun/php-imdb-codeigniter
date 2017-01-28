@@ -9,26 +9,30 @@
 
 <!-- Main content -->
 <div class="col-sm-8">
-	<h1>Página de inicio</h1>
-	<h2>Lista de usuarios</h2>
-	<table class="table">
-		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Nombre</th>
-				<th>Password</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach($usuarios as $usuario) {
-				echo("<tr>");
-				echo("<td>". $usuario->id ."</td>");
-				echo("<td>". $usuario->nombre ."</td>");
-				echo("<td>". $usuario->password ."</td>");
-				echo("</tr>");
-			} ?>
-		</tbody>
-	</table>
+	<h3>Añadido recientemente</h3>
+	<div class="row lista-generos">
+
+		<?php
+		$numTiulos = sizeOf($titulos);
+		for ($i = 0; $i < $numTiulos; $i = $i + 4) {
+			echo  '<div class="row">';
+			$limitRow = $i+4;
+			for ($j = $i; ($j < $limitRow) && $j < $numTiulos; $j++){
+				echo  '<div class="col-sm-3">';
+					$titulo = $titulos[$j];
+					echo img(array(
+						'src'   => base_url("assets/posters/" . ((isset($titulo->imagen) && !empty($titulo->imagen)) ? $titulo->imagen : 'default.jpg' )),
+						'height'=> '150',
+						'class'=> 'img-thumbnail'
+					));
+					echo '<h5 class="text-center">'.anchor("/titulo/".$titulo->id, $titulo->titulo, "title='Ver detalles'").'</h5>';
+				echo '</div>';
+			}
+			echo '</div>';
+		}
+		?>
+
+	</div>
 </div>
 
 <!-- Sidebar content -->

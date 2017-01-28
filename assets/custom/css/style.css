@@ -21,45 +21,58 @@ body {
     }
 }
 
+/* Customize container */
+@media (min-width: 768px) {
+    .imdb-navbar-content {
+        height: 83px;
+    padding-top: 12px;
+    }
+
+}
+
 
 /* NavBar*/
-.navbarSprite {
-    background-color: #575757;
-    background-image: none;
-    padding-top: 1px;
-    margin-top: -1px;
+.imdb-navbar {
+    border-radius: 0px;
+    border: 0px;
     /* un-container */
     margin-right: -15px;
     margin-left: -15px;
+    margin-bottom: 0;
 }
 
-.web-navbar {
+.imdb-navbar-top {
+    background-color: #575757;
+    background-image: none;
+    height: 15px;
+    border-bottom: 1px solid #444444;
+
+}
+
+.imdb-navbar-content {
     background: #333333;
     background: -webkit-linear-gradient(top, #646464 0%, #0e0e0e 100%);
     background: linear-gradient(to bottom, #646464 0%,#0e0e0e 100%);
-    border-top: 1px solid #444444;
-    color: #fff;
-    font: 10pt Verdana, Arial, sans-serif;
-    height: 83px;
-    position: relative;
-    z-index: 200;
-    margin-top: 15px;
 }
 
-.web-navbar .nav.navbar-inverse {
-    background: transparent;
-    height: 41px;
+.imdb-navbar .imdb-logo {
+    font-size: 30px;
+    color: #f1d85a;
 }
 
-.web-navbar .web-logo {
-    height: 82px;
+.imdb-navbar .dropdown-header {
+    color: #A58500;
+    font-size: 11px;
+    font-weight: bold;
 }
 
 
-/* title box */
-.title-hero {
+
+/* detail overview */
+.detail-overview-box {
     background-color: #333;
-    padding: 15px;
+    padding: 0 15px;
+    color: white;
 
     /* un-row */
     margin-right: -15px;
@@ -67,19 +80,108 @@ body {
 
 }
 
-.title-hero h1 {
-    color: #fff;
+.detail-overview-box h1 {
+    font-size: 24px;
 }
 
-.title-hero .poster {
+
+.detail-overview-box .scores {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.detail-overview-box .global-score {
+
+    border-right: 1px solid #6b6b6b;
+}
+
+.detail-overview-box .global-score .star {
+    color: #e4bb24;
+}
+
+.detail-overview-box .global-score .max-score {
+    color: gray;
+    font-size: 10px;
+}
+
+.detail-overview-box .global-score .num-score {
+    font-size: 10px;
+    color: silver;
+}
+
+
+.detail-overview-box .user-score .star {
+    color: #648eed;
+}
+
+
+.detail-overview-box .overview-extra {
+    color: silver;
+    font-size: 12px;
+    margin: 0 0 20px 0;
+}
+
+.detail-overview-box .overview-extra a {
+    color: silver;
+}
+
+.detail-overview-box .overview-extra a:hover {
+    color: #63c9ff;
+}
+
+.detail-overview-box .overview-image {
     height: 268px;
-    /* un-container */
-    margin-left: -15px;
-    margin-bottom: -15px;
 }
 
+
+.main-content {
+    padding: 10px;
+}
 
 /* Sidebar */
 .sidebar-box {
     /* border-left: 1px solid black; */
+}
+
+
+.table.imdb-chart>tbody>tr>td {
+    vertical-align: middle;
+    border-top: 0;
+}
+
+.lista-generos {
+    padding: 20px;
+}
+
+.lista-generos h4 {
+    padding: 10px 0;
+}
+
+
+.login-form {
+    background: #fff;
+    border: 1px #ddd solid;
+    margin-top: 50px;
+    padding: 20px 30px;
+    border-radius: 5px;
+}
+
+.registro-form {
+    border-right: 1px #ddd solid;
+    padding: 20px 30px;
+}
+
+ul.bio-persona {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.bio-persona li {
+    margin: 20px 10px;
+}
+
+.bio-persona li.foto {
+    margin: 20px;
 }

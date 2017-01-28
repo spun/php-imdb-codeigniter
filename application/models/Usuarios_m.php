@@ -20,6 +20,13 @@ class Usuarios_m extends CI_Model {
 	public function add($nombre, $correo, $password) {
 		return $this->db->insert("Usuarios", array('nombre' => $nombre, 'correo' => $correo, 'password' => $password));
 	}
+
+	public function get_user_score($idUsuario, $idTitulo) {
+		$this->db->select("puntuacion");
+		$this->db->from("Votos");
+		$this->db->where('usuario', $idUsuario);
+		$this->db->where('titulo', $idTitulo);
+		return $this->db->get()->row();	}
 }
 
 ?>

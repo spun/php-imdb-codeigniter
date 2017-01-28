@@ -16,6 +16,14 @@ class Personajes_m extends CI_Model {
 		$this->db->select("id, nombre, descripcion");
 		return $this->db->get_where('Personajes', array('id' => $idPersonaje))->row();
 	}
+
+	public function search($match) {
+		$this->db->select("id, nombre");
+		$this->db->from("Personajes");
+		$this->db->like('nombre', $match, 'both');
+		$this->db->limit(25);
+		return $this->db->get()->result();
+	}
 }
 
 ?>

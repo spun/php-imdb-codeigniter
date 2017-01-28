@@ -54,5 +54,8 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['titulo/:num'] = 'titulo/detail';
+$route['titulo/:num/votar/:num'] = 'titulo/voto';
+$route['titulo/:num/temporada/:num'] = 'titulo/episodios';
 $route['persona/:num'] = 'persona/detail';
 $route['personaje/:num'] = 'personaje/detail';
+$route['generos/:num'] = 'generos/top';

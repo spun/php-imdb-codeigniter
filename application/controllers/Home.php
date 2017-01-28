@@ -6,13 +6,16 @@ class Home extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this->load->model("Usuarios_m", '', TRUE);
+		$this->load->model("Titulos_m", '', TRUE);
 	}
 
 
 	public function index() {
+		// Título de la página
+		$data['tituloHEAD'] = "Inicio";
 
-		$data['usuarios'] = $this->Usuarios_m->get_all();
+		// Últimos títulos añadidos
+		$data['titulos'] = $this->Titulos_m->get_all();
 		$this->load->view('home/index', $data);
 	}
 

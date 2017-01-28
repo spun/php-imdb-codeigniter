@@ -17,6 +17,7 @@ class Persona extends CI_Controller {
 		$idPersona = $this->uri->segment(2);
 
 		$data['persona'] = $this->Personas_m->get($idPersona);
+		$data['tituloHEAD'] = $data['persona']->nombre;
 
 		$this->load->view('persona/detalle', $data);
 	}

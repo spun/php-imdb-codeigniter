@@ -2,7 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /* Constantes propias del proyecto */
-define('copyright', 'Copyright &copy; 1990-2017 IW');
+define('copyright', 'Copyright &copy; 2016-2017 IW');
+define('webname', 'IMDb');
 
 /*
 |--------------------------------------------------------------------------

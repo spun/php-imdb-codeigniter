@@ -16,7 +16,6 @@ class Usuario extends CI_Controller {
 
 	public function login() {
 
-		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 
 
@@ -46,7 +45,7 @@ class Usuario extends CI_Controller {
 			$nombre   = $this->input->post('correo');
 			$password = $this->input->post('password');
 
-			$returnQuery = $this->Usuarios_m->get($nombre, $password);
+			$returnQuery = $this->Usuarios_m->get($nombre, sha1($password));
 
 			if(sizeOf($returnQuery) == 1) {
 				// Inicio de sesión
@@ -125,7 +124,7 @@ class Usuario extends CI_Controller {
 			$correo   = $this->input->post('correo');
 			$password = $this->input->post('password');
 
-			if($this->Usuarios_m->add($nombre, $correo, $password) == true) {
+			if($this->Usuarios_m->add($nombre, $correo, sha1($password)) == true) {
 				// Redirigimos al login
 				redirect('usuario/login', 'refresh');
 			} else {

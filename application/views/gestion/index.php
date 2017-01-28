@@ -6,7 +6,7 @@
 	$this->load->view('inc/cabecera_gestion.php');
 ?>
 
-	<div>
+	<div style="margin: 50px 10px;">
 		<?php echo $output; ?>
 	</div>
 

@@ -9,10 +9,14 @@
 
 <!-- Main content -->
 <div class="col-sm-8">
-	<h1>Detalles de la persona</h1>
+	<h1>Detalles de "<?= $persona->nombre ?>"</h1>
 	<?php
-		echo("<ul>");
-		echo("<li><strong>ID: </strong>". $persona->id ."</li>");
+		echo('<ul class="bio-persona">');
+		echo '<li class="foto img-thumbnail pull-right">'.img(array(
+			'src'   => base_url("assets/personas/" . ((isset($persona->foto) && !empty($persona->foto)) ? $persona->foto : 'default.jpg' )),
+			'class' => 'overview-image',
+			'width'	=> '150'
+		)).'</li>';
 		echo("<li><strong>Nombre: </strong>". $persona->nombre ."</li>");
 		echo("<li><strong>Descripción: </strong>". $persona->descripcion ."</li>");
 		echo("</tr>");

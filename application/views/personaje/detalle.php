@@ -8,10 +8,14 @@
 
 <!-- Main content -->
 <div class="col-sm-8">
-	<h1>Detalles del personaje</h1>
+	<h1>Detalles de "<?= $personaje->nombre ?>"</h1>
 	<?php
-		echo("<ul>");
-		echo("<li><strong>ID: </strong>". $personaje->id ."</li>");
+		echo('<ul class="bio-persona">');
+		echo '<li class="foto img-thumbnail pull-right">'.img(array(
+			'src'   => base_url("assets/personajes/" . ((isset($personaje->foto) && !empty($personaje->foto)) ? $personaje->foto : 'default.jpg' )),
+			'class' => 'overview-image',
+			'width'	=> '150'
+		)).'</li>';
 		echo("<li><strong>Nombre: </strong>". $personaje->nombre ."</li>");
 		echo("<li><strong>Descripción: </strong>". $personaje->descripcion ."</li>");
 		echo("</tr>");
